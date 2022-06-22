@@ -1,6 +1,7 @@
 <center>
 <img width="50%" src="https://user-images.githubusercontent.com/53150440/175107210-450ba9f7-661b-488a-aeeb-4f469aecf307.png"></img>
 </center>
+
 # Grupo!
 
 [![NPM Version][npm-version-image]][npm-url]
