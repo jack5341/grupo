@@ -18,6 +18,11 @@
   },
   "author": "Nedim AKAR <nedim.akar53411@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "express",
+    "cluster-mode",
+    "node.js"
+  ],
   "bugs": {
     "url": "https://github.com/jack5341/grupo/issues"
   },
