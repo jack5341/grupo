@@ -4,7 +4,6 @@
 # Grupo!
 
 [![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
 
 Run your application in cluster mode in middleware! 🃏
 
@@ -73,8 +72,6 @@ app.use(
 
 ### express/connect
 
-Sample app that will log all request in the Apache combined format to STDOUT
-
 ```js
 var express = require("express");
 var grupo = require("grupo");
@@ -89,8 +86,6 @@ app.get("/", function (req, res) {
 ```
 
 ### vanilla http server
-
-Sample app that will log all request in the Apache combined format to STDOUT
 
 ```js
 var finalhandler = require("finalhandler");
