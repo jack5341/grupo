@@ -79,11 +79,13 @@ var grupo = require("grupo");
 
 var app = express();
 
-app.use(grupo());
+app.use(grupo(3000));
 
 app.get("/", function (req, res) {
   res.send("hello, world!");
 });
+
+app.listen(3000)
 ```
 
 ### vanilla http server
@@ -94,7 +96,7 @@ var http = require("http");
 var grupo = require("grupo");
 
 // create "middleware"
-var logger = grupo();
+var logger = grupo(3000);
 
 http.createServer(function (req, res) {
   var done = finalhandler(req, res);

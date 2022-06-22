@@ -23,10 +23,11 @@ enum logTypesEnum {
  */
 
 /**
+ * @param {number} port port of currently running application
  * @param {options} opts options of middleware
  */
 
-export default async function grupo(opts: options) {
+export default async function grupo(port: number, opts: options) {
   const instances = opts.instance || 0;
   const logs = opts.log || false;
 
@@ -36,7 +37,7 @@ export default async function grupo(opts: options) {
 
   let pid: string;
   try {
-    pid = await getPid(3000);
+    pid = await getPid(port);
     runWorkers(pid, instances);
   } catch (err) {
     logger(err, logTypesEnum.ERROR);
