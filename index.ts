@@ -19,15 +19,15 @@ module.exports = grupo;
 
 async function grupo(port: number, instance?: number) {
   let pid: string;
-  pid = String(await getPid(3000));
+  pid = await getPid(3000);
 }
 
 /**
  *
- * @param port pid of application
- * @returns {<Promise<string>>}
+ * @param port to find pid by port
+ * @returns {Promise<string>} returns pid of application
  */
-async function getPid(port: number) {
+async function getPid(port: number): Promise<string> {
   return await new Promise((resolve, reject) => {
     exec(`lsof -n -i :${port} | grep LISTEN`, (err, stdout) => {
       if (err) {
@@ -39,7 +39,7 @@ async function getPid(port: number) {
       // Getting everytime 1st element
       out = stdout.match(/\b(\w+)\b/g)[1];
 
-      resolve(out);
+      resolve(String(out));
     });
   });
 }
