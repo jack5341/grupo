@@ -6,7 +6,7 @@
 
 [![NPM Version][npm-version-image]][npm-url]
 
-Run your application in cluster mode in middleware! 🃏
+Run your application as cluster mode in middleware! 🃏
 
 ## Installation
 
