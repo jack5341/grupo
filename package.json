@@ -1,0 +1,19 @@
+{
+  "name": "grupo",
+  "version": "0.0.1",
+  "description": "run your application in cluster mode in one middleware!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack5341/grupo.git"
+  },
+  "author": "Nedim AKAR <nedim.akar53411@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jack5341/grupo/issues"
+  },
+  "homepage": "https://github.com/jack5341/grupo#readme"
+}
