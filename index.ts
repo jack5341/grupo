@@ -23,45 +23,45 @@ enum logTypesEnum {
  */
 
 /**
- * @param {number} port port for getting pid of parent process
  * @param {options} opts options of middleware
  */
 
-export default async function grupo(port: number, opts: options) {
+export default async function grupo(opts: options) {
   const instances = opts.instance || 0;
   const logs = opts.log || false;
+
+  if (logs) {
+    console.log = function () {};
+  }
+
   let pid: string;
   try {
     pid = await getPid(3000);
-    runWorkers(pid, instances, logs);
+    runWorkers(pid, instances);
   } catch (err) {
     logger(err, logTypesEnum.ERROR);
   }
 }
 
 /**
- *
- * @param {number} instance number of instances
  * @param {string} pid pid of parent process
- * @param {boolean} logs boolean for enable and disable logs
+ * @param {number} instance instance of fork count
  */
+async function runWorkers(pid: string, instance: number) {
+  const totalCPUs = instance || cpus().length;
 
-async function runWorkers(pid: string, instance: number, logs: boolean) {
-  const totalCPUs = cpus().length;
-  if (cluster.isPrimary) {
-    logger(`Number of CPUs is ${totalCPUs}`, logTypesEnum.INFO);
-    logger(`Master ${process.pid} is running`, logTypesEnum.INFO);
+  logger(`Number of CPUs is ${totalCPUs}`, logTypesEnum.INFO);
+  logger(`Master ${pid} is running`, logTypesEnum.INFO);
 
-    for (let i = 0; i < totalCPUs; i++) {
-      cluster.fork();
-    }
-
-    cluster.on("exit", (worker) => {
-      logger(`worker ${worker.process.pid} died`, logTypesEnum.INFO);
-      logger("new worker creating again", logTypesEnum.INFO);
-      cluster.fork();
-    });
+  for (let i = 0; i < totalCPUs; i++) {
+    cluster.fork();
   }
+
+  cluster.on("exit", (worker) => {
+    logger(`worker ${worker.process.pid} died`, logTypesEnum.INFO);
+    logger("new worker creating again", logTypesEnum.INFO);
+    cluster.fork();
+  });
 }
 
 /**
@@ -97,10 +97,5 @@ function logger(message: string, type: logTypesEnum) {
       break;
   }
 }
-
-grupo(3000, {
-  instance: 0,
-  log: true,
-});
 
 module.exports = grupo;
