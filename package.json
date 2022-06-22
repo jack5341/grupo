@@ -2,9 +2,15 @@
   "name": "grupo",
   "version": "0.0.1",
   "description": "run your application in cluster mode in one middleware!",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node index.ts",
+    "start:dev": "nodemon index.ts",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "com:git": "git add . && git commit -m ",
+    "push:git": "git push",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jack5341/grupo/issues"
   },
-  "homepage": "https://github.com/jack5341/grupo#readme"
+  "homepage": "https://github.com/jack5341/grupo#readme",
+  "devDependencies": {
+    "ts-node": "^10.8.1"
+  }
 }
