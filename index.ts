@@ -86,6 +86,12 @@ async function getPid(port: number): Promise<string> {
   });
 }
 
+/**
+ *
+ * @param {string} message message of log
+ * @param {logTypesEnum} type type of log
+ */
+
 function logger(message: string, type: logTypesEnum) {
   switch (type) {
     case logTypesEnum.INFO:
