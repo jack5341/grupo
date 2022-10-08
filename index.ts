@@ -31,7 +31,7 @@ export default async function grupo(port: number, opts: options) {
   const instances = opts.instance || 0;
   const logs = opts.log || false;
 
-  if (logs) {
+  if (!logs) {
     console.log = function () {};
   }
 
